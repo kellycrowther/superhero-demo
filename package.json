@@ -22,7 +22,8 @@
     "@angular/router": "7.2.13",
     "angular-material": "^1.1.18",
     "core-js": "3.0.1",
-    "rxjs": "^6.4.0",
+    "rxjs": "6.4.0",
+    "ts-md5": "1.2.4",
     "zone.js": "0.9.0"
   },
   "devDependencies": {
