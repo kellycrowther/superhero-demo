@@ -9,12 +9,14 @@ import { CharacterServiceModule } from 'src/services/characters/character.servic
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FeaturedCharacterComponent } from './featured-character/featured-character.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterListComponent,
-    CharacterDetailComponent
+    CharacterDetailComponent,
+    FeaturedCharacterComponent
   ],
   imports: [
     BrowserModule,

@@ -14,10 +14,10 @@ export class CharacterListComponent implements OnInit {
   constructor(public characterService: CharacterService, public data: MarvelProviderService) { }
 
   ngOnInit() {
-    this.characterService.getCharacters().subscribe((data) => {
-      console.info('characters :', data.data.results);
-      this.characters = data.data.results;
-    });
+    // this.characterService.getCharacters().subscribe((data) => {
+    //   console.info('characters :', data.data.results);
+    //   this.characters = data.data.results;
+    // });
   }
 
 }
