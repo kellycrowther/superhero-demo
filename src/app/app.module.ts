@@ -6,6 +6,9 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
 import { HttpClientModule } from '@angular/common/http';
 import { MarvelProviderModule } from 'src/providers/marvel-provider.module';
 import { CharacterServiceModule } from 'src/services/characters/character.service.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -16,8 +19,11 @@ import { CharacterServiceModule } from 'src/services/characters/character.servic
   imports: [
     BrowserModule,
     HttpClientModule,
+    FlexLayoutModule,
     MarvelProviderModule,
-    CharacterServiceModule
+    CharacterServiceModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

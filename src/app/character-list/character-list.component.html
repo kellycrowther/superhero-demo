@@ -1,3 +1,9 @@
-<p>
-  character-list works!
-</p>
+<div class="card-container container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <mat-card class="card-picture" *ngFor="let character of characters">
+    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+      <span fxFlex="80%">{{character.name}}</span>
+    </mat-card-title>
+    <img mat-card-image src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}">
+    <div>{{character.description}}</div>
+  </mat-card>
+</div>
