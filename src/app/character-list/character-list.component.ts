@@ -18,6 +18,7 @@ export class CharacterListComponent implements OnInit {
 
   ngOnInit() {
     this.characters$ = this.characterService.getCharacters();
+    this.onSearchAsPromise(undefined);
 
   }
 

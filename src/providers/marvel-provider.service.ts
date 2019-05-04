@@ -11,7 +11,7 @@ export class MarvelProviderService {
   constructor(public http: HttpClient) { }
 
   public getCharacters(nameStartsWith?: string): Observable<any> {
-    const startsWith = nameStartsWith ? '?nameStartsWith=' + nameStartsWith : '';
+    const startsWith = nameStartsWith !== undefined ? 'nameStartsWith=' + nameStartsWith : '';
     return this.http.get(`/characters${startsWith}`)
       .pipe(
         map((data) => {
@@ -28,7 +28,7 @@ export class MarvelProviderService {
   }
 
   public getCharactersAsPromise(nameStartsWith?: string): Promise<any> {
-    const startsWith = nameStartsWith ? '?nameStartsWith=' + nameStartsWith : '';
+    const startsWith = nameStartsWith !== undefined ? 'nameStartsWith=' + nameStartsWith : '';
     return this.http.get(`/characters${startsWith}`)
       .pipe(
         map((data) => {
