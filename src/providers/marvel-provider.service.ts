@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
@@ -11,8 +11,11 @@ export class MarvelProviderService {
   constructor(public http: HttpClient) { }
 
   public getCharacters(nameStartsWith?: string): Observable<any> {
-    const startsWith = nameStartsWith !== undefined ? 'nameStartsWith=' + nameStartsWith : '';
-    return this.http.get(`/characters${startsWith}`)
+    let params = new HttpParams();
+    if (nameStartsWith) {
+      params = params.append('nameStartsWith', nameStartsWith);
+    }
+    return this.http.get(`/characters`, { params: params })
       .pipe(
         map((data) => {
           if (!data) {
@@ -28,8 +31,11 @@ export class MarvelProviderService {
   }
 
   public getCharactersAsPromise(nameStartsWith?: string): Promise<any> {
-    const startsWith = nameStartsWith !== undefined ? 'nameStartsWith=' + nameStartsWith : '';
-    return this.http.get(`/characters${startsWith}`)
+    let params = new HttpParams();
+    if (nameStartsWith) {
+      params = params.append('nameStartsWith', nameStartsWith);
+    }
+    return this.http.get(`/characters`, { params: params })
       .pipe(
         map((data) => {
           if (!data) {

@@ -1,7 +1,11 @@
-<div class="card-container container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center">
+<div class="card-container container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="5%" fxLayoutAlign="center">
 
-  <label>Search for Character As Observable</label>
-  <input type="text" (change)="onSearch($event)" />
+  <div fxFlex="100%">
+    <h2>Search As Observable</h2>
+    <mat-form-field class="search-area">
+      <input matInput type="text" [formControl]="search" placeholder="Search As Observable" />
+    </mat-form-field>
+  </div>
 
   <mat-card class="card-picture" *ngFor="let character of ( characters$ | async )?.data.results">
     <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
@@ -15,8 +19,12 @@
 <div class="card-container container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%"
   fxLayoutAlign="center">
 
-  <label>Search for Character As Promise</label>
-  <input type="text" (change)="onSearchAsPromise($event)" />
+  <div fxFlex="100%">
+    <h2>Search As Promise</h2>
+    <mat-form-field class="search-area">
+      <input matInput type="text" (keyup)="onSearchAsPromise($event.target.value)" placeholder="Search As Promise" />
+    </mat-form-field>
+  </div>
 
   <mat-card class="card-picture" *ngFor="let character of charactersAsPromise">
     <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">

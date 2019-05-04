@@ -1,3 +1,7 @@
+.card-container {
+  padding: 40px;
+}
+
 .img {
   width: 100%;
   margin-bottom: 18%;
@@ -11,4 +15,8 @@
 .container {
   min-height: 100%;
   width: 100%;
+}
+
+.search-area input {
+  width: 20%;
 }
