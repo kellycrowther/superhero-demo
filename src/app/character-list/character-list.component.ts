@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CharacterService } from 'src/services/characters/character.service';
 import { MarvelProviderService } from 'src/providers/marvel-provider.service';
 import { Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'character-list',

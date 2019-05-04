@@ -25,4 +25,21 @@ export class MarvelProviderService {
           return throwError(e || 'Error getCharacters()');
         }));
   }
+
+  public getCharactersAsPromise(): Promise<any> {
+    return this.http.get('/characters')
+      .pipe(
+        map((data) => {
+          if (!data) {
+            console.warn('MarvelProviderService->getCharacters() Invalid Data');
+            throwError('MarvelProviderService->getCharacters() Invalid Data');
+          }
+          return data;
+        }),
+        catchError(e => {
+          console.error('MarvelProviderService->getCharacters() Error', e);
+          return throwError(e || 'Error getCharacters()');
+        }))
+        .toPromise();
+  }
 }

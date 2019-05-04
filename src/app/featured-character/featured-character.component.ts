@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterService } from 'src/services/characters/character.service';
 import { MarvelProviderService } from 'src/providers/marvel-provider.service';
-import { shareReplay, first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,14 +16,18 @@ export class FeaturedCharacterComponent implements OnInit {
 
   ngOnInit() {
     this.character$ = this.characterService.getCharacters();
-    // this.character$.subscribe((data) => {
-    //   console.info('INIT FIRED: ', data);
-    // });
   }
 
+  /* Why use? May want to eagerly fetch? */
   public getCharactersButton(): void {
     this.character$.subscribe((data) => {
-      console.info('BUTTON FIRED: ', data);
+      console.info('FeaturedCharacterComponent->getCharactersButton()', data);
+    });
+  }
+
+  public getCharactersButtonAsPromise(): void {
+    this.characterService.getCharactersAsPromise().then((data) => {
+      console.info('FeaturedCharacterComponent->getCharactersButtonAsPromise()', data);
     });
   }
 

@@ -11,9 +11,9 @@ export class CharacterDetailComponent implements OnInit {
   constructor(public characterService: CharacterService) { }
 
   ngOnInit() {
-    this.characterService.getCharacters().subscribe((data) => {
-      console.info('INIT FIRED: ', data);
-    });
+    // this.characterService.getCharacters().subscribe((data) => {
+    //   console.info('INIT FIRED: ', data);
+    // });
   }
 
 }
