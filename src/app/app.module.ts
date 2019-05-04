@@ -10,6 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FeaturedCharacterComponent } from './featured-character/featured-character.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,13 @@ import { FeaturedCharacterComponent } from './featured-character/featured-charac
   imports: [
     BrowserModule,
     HttpClientModule,
+    RouterModule,
     FlexLayoutModule,
     MarvelProviderModule,
     CharacterServiceModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
