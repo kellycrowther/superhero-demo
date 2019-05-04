@@ -10,8 +10,9 @@ export class MarvelProviderService {
 
   constructor(public http: HttpClient) { }
 
-  public getCharacters(): Observable<any> {
-    return this.http.get('/characters')
+  public getCharacters(nameStartsWith?: string): Observable<any> {
+    const startsWith = nameStartsWith ? '?nameStartsWith=' + nameStartsWith : '';
+    return this.http.get(`/characters${startsWith}`)
       .pipe(
         map((data) => {
           if (!data) {
@@ -26,19 +27,20 @@ export class MarvelProviderService {
         }));
   }
 
-  public getCharactersAsPromise(): Promise<any> {
-    return this.http.get('/characters')
+  public getCharactersAsPromise(nameStartsWith?: string): Promise<any> {
+    const startsWith = nameStartsWith ? '?nameStartsWith=' + nameStartsWith : '';
+    return this.http.get(`/characters${startsWith}`)
       .pipe(
         map((data) => {
           if (!data) {
-            console.warn('MarvelProviderService->getCharacters() Invalid Data');
-            throwError('MarvelProviderService->getCharacters() Invalid Data');
+            console.warn('MarvelProviderService->getCharactersAsPromise() Invalid Data');
+            throwError('MarvelProviderService->getCharactersAsPromise() Invalid Data');
           }
           return data;
         }),
         catchError(e => {
-          console.error('MarvelProviderService->getCharacters() Error', e);
-          return throwError(e || 'Error getCharacters()');
+          console.error('MarvelProviderService->getCharactersAsPromise() Error', e);
+          return throwError(e || 'Error getCharactersAsPromise()');
         }))
         .toPromise();
   }

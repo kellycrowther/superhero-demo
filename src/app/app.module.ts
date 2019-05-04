@@ -12,13 +12,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FeaturedCharacterComponent } from './featured-character/featured-character.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterListComponent,
     CharacterDetailComponent,
-    FeaturedCharacterComponent
+    FeaturedCharacterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     MarvelProviderModule,
     CharacterServiceModule,
+    MatToolbarModule,
     MatCardModule,
     MatButtonModule,
     AppRoutingModule

@@ -13,17 +13,17 @@ export class CharacterService {
 
   constructor(public marvelProvider: MarvelProviderService) { }
 
-  public getCharacters(): Observable<any> {
+  public getCharacters(nameStartsWith?: string): Observable<any> {
     // if (!this.hasBeenCalled) {
     //   this.hasBeenCalled = true;
     //   return this.marvelProvider.getCharacters().pipe(shareReplay(1));
     // } else {
     //   return this.characterCache$;
     // }
-    return this.marvelProvider.getCharacters().pipe(shareReplay(1));
+    return this.marvelProvider.getCharacters(nameStartsWith).pipe(shareReplay(1));
   }
 
-  public getCharactersAsPromise(): Promise<any> {
-    return this.marvelProvider.getCharactersAsPromise();
+  public getCharactersAsPromise(nameStartsWith?: string): Promise<any> {
+    return this.marvelProvider.getCharactersAsPromise(nameStartsWith);
   }
 }
