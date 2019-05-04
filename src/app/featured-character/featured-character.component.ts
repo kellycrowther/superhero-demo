@@ -16,7 +16,7 @@ export class FeaturedCharacterComponent implements OnInit {
   constructor(public characterService: CharacterService, public data: MarvelProviderService) { }
 
   ngOnInit() {
-    this.character$ = this.characterService.getCharacters().pipe(shareReplay(4));
+    this.character$ = this.characterService.getCharacters();
     // this.character$.subscribe((data) => {
     //   console.info('INIT FIRED: ', data);
     // });

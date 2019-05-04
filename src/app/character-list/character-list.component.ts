@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterService } from 'src/services/characters/character.service';
 import { MarvelProviderService } from 'src/providers/marvel-provider.service';
+import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'character-list',
@@ -9,15 +11,12 @@ import { MarvelProviderService } from 'src/providers/marvel-provider.service';
 })
 export class CharacterListComponent implements OnInit {
 
-  public characters: any;
+  public characters$: Observable<any>;
 
   constructor(public characterService: CharacterService, public data: MarvelProviderService) { }
 
   ngOnInit() {
-    // this.characterService.getCharacters().subscribe((data) => {
-    //   console.info('characters :', data.data.results);
-    //   this.characters = data.data.results;
-    // });
+    this.characters$ = this.characterService.getCharacters();
   }
 
 }
