@@ -11,14 +11,18 @@ import { Observable } from 'rxjs';
 export class FeaturedCharacterComponent implements OnInit {
 
   public character$: Observable<any>;
+  public showFeaturedCharacter: boolean = false;
 
   constructor(public characterService: CharacterService, public data: MarvelProviderService) { }
 
+  /* Eager vs Lazy Fetching */
   ngOnInit() {
     this.character$ = this.characterService.getCharacters();
+    this.characterService.getCharactersAsPromise().then((data) => {
+      console.info('FeaturedCharacterComponent->ngOnInit->asPromise: ', data);
+    });
   }
 
-  /* Why use? May want to eagerly fetch? */
   public getCharactersButton(): void {
     this.character$.subscribe((data) => {
       console.info('FeaturedCharacterComponent->getCharactersButton()', data);
@@ -29,6 +33,10 @@ export class FeaturedCharacterComponent implements OnInit {
     this.characterService.getCharactersAsPromise().then((data) => {
       console.info('FeaturedCharacterComponent->getCharactersButtonAsPromise()', data);
     });
+  }
+
+  public toggleFeaturedCharacter(): void {
+    this.showFeaturedCharacter = !this.showFeaturedCharacter;
   }
 
 }

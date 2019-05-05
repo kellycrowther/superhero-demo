@@ -1,7 +1,8 @@
 <h2>Featured Character</h2>
 
-<div class="card-container container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%"
-  fxLayoutAlign="center">
+<button mat-raised-button color="primary" (click)="toggleFeaturedCharacter()">Show Featured Character</button>
+
+<div *ngIf="showFeaturedCharacter" class="card-container container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center">
   <mat-card class="card-picture">
     <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
       <span fxFlex="80%">{{ (character$ | async)?.data.results[0].name }}</span>
