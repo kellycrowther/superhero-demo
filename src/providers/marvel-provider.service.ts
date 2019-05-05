@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { ICharacterDataWrapper } from 'src/models/characters';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class MarvelProviderService {
 
   constructor(public http: HttpClient) { }
 
-  public getCharacters(nameStartsWith?: string): Observable<any> {
+  public getCharacters(nameStartsWith?: string): Observable<ICharacterDataWrapper> {
     let params = new HttpParams();
     if (nameStartsWith) {
       params = params.append('nameStartsWith', nameStartsWith);
@@ -30,7 +31,7 @@ export class MarvelProviderService {
         }));
   }
 
-  public getCharactersAsPromise(nameStartsWith?: string): Promise<any> {
+  public getCharactersAsPromise(nameStartsWith?: string): Promise<ICharacterDataWrapper> {
     let params = new HttpParams();
     if (nameStartsWith) {
       params = params.append('nameStartsWith', nameStartsWith);

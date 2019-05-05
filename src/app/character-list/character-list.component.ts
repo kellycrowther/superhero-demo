@@ -4,6 +4,7 @@ import { MarvelProviderService } from 'src/providers/marvel-provider.service';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
+import { ICharacterDataWrapper, ICharacter } from 'src/models/characters';
 
 @Component({
   selector: 'character-list',
@@ -12,8 +13,8 @@ import { FormControl } from '@angular/forms';
 })
 export class CharacterListComponent implements OnInit {
 
-  public characters$: Observable<any>;
-  public charactersAsPromise: Array<any>;
+  public characters$: Observable<ICharacterDataWrapper>;
+  public charactersAsPromise: ICharacter[];
   public search = new FormControl();
 
   constructor(public characterService: CharacterService, public data: MarvelProviderService) { }
@@ -29,7 +30,7 @@ export class CharacterListComponent implements OnInit {
   }
 
   public onSearchAsPromise(nameStartsWith?: string): void {
-    this.characterService.getCharactersAsPromise(nameStartsWith).then((characters) => {
+    this.characterService.getCharactersAsPromise(nameStartsWith).then((characters: ICharacterDataWrapper) => {
       this.charactersAsPromise = characters.data.results;
     });
   }
