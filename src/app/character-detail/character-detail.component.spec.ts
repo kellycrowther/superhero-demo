@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { CharacterDetailComponent } from './character-detail.component';
 
 describe('CharacterDetailComponent', () => {
@@ -8,6 +8,9 @@ describe('CharacterDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [
+        HttpClient, HttpHandler
+      ],
       declarations: [ CharacterDetailComponent ]
     })
     .compileComponents();
