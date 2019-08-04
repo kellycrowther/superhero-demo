@@ -52,8 +52,15 @@ export class MarvelProviderService {
         .toPromise();
   }
 
-  public getComics(): Observable<any> {
-    return this.http.get(`/comics`).pipe(
+  public getComics(limit?: number, offset?: number): Observable<any> {
+    let params = new HttpParams();
+    if (limit) {
+      params = params.append('limit', limit.toString());
+    }
+    if (offset) {
+      params = params.append('offset', offset.toString());
+    }
+    return this.http.get(`/comics`, { params: params }).pipe(
       map((data: any) => {
         if (!data) {
           console.warn('MarvelProviderService->getComics() Invalid Data');

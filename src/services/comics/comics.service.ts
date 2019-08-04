@@ -13,7 +13,7 @@ export class ComicsService {
 
   constructor(public marvelProvider: MarvelProviderService) { }
 
-  public getCharacters(): Observable<ICharacterDataWrapper> {
-    return this.marvelProvider.getComics();
+  public getComics(limit?: number, offset?: number): Observable<ICharacterDataWrapper> {
+    return this.marvelProvider.getComics(limit, offset);
   }
 }

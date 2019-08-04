@@ -1,3 +1,28 @@
-<p>
-  comics works!
-</p>
+<div class="card-container container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="5%" fxLayoutAlign="center">
+  <div fxFlex="100%">
+    <h2>Comics</h2>
+  </div>
+
+  <div fxFlex="100%">
+    <h3>Controls</h3>
+    <h4>Paginate</h4>
+      <mat-paginator
+        [length]="(comics$ | async)?.total"
+        [pageSize]="(comics$ | async)?.count"
+        (page)="changePage($event)">
+      </mat-paginator>
+    <h4>Search</h4>
+    <mat-form-field>
+      <input matInput placeholder="Search Comics" type="text">
+    </mat-form-field>
+  </div>
+
+  <mat-spinner *ngIf="!((comics$ | async)?.results)"></mat-spinner>
+  <mat-card class="card-picture" *ngFor="let comic of (comics$ | async)?.results">
+    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+      <span fxFlex="80%">{{comic?.title}}</span>
+    </mat-card-title>
+    <!-- <img mat-card-image src="{{comic?.thumbnail?.path}}.{{character?.thumbnail?.extension}}"> -->
+    <div>{{comic?.description}}</div>
+  </mat-card>
+</div>
