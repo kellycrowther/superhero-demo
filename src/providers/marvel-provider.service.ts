@@ -52,13 +52,16 @@ export class MarvelProviderService {
         .toPromise();
   }
 
-  public getComics(limit?: number, offset?: number): Observable<any> {
+  public getComics(limit?: number, offset?: number, title?: string): Observable<any> {
     let params = new HttpParams();
     if (limit) {
       params = params.append('limit', limit.toString());
     }
     if (offset) {
       params = params.append('offset', offset.toString());
+    }
+    if (title) {
+      params = params.append('title', title);
     }
     return this.http.get(`/comics`, { params: params }).pipe(
       map((data: any) => {

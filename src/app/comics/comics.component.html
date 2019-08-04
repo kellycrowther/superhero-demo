@@ -13,7 +13,7 @@
       </mat-paginator>
     <h4>Search</h4>
     <mat-form-field>
-      <input matInput placeholder="Search Comics" type="text">
+      <input matInput [formControl]="searchControl" placeholder="Search Comics" type="text">
     </mat-form-field>
   </div>
 
