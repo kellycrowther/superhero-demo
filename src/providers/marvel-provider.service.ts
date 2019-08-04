@@ -51,4 +51,20 @@ export class MarvelProviderService {
         }))
         .toPromise();
   }
+
+  public getComics(): Observable<any> {
+    return this.http.get(`/comics`).pipe(
+      map((data: any) => {
+        if (!data) {
+          console.warn('MarvelProviderService->getComics() Invalid Data');
+          throwError('MarvelProviderService->getComics() Invalid Data');
+        }
+        return data.data;
+      }),
+      catchError(e => {
+        console.error('MarvelProviderService->getCharactersAsPromise() Error', e);
+        return throwError(e || 'Error getComics()');
+      })
+    );
+  }
 }

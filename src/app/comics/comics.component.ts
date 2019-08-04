@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComicsService } from '../../services/comics/comics.service';
 
 @Component({
   selector: 'comics',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComicsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public comicsService: ComicsService) { }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.comicsService.getCharacters().subscribe(data => {
+      console.info('DATA: ', data);
+    });
   }
 
 }
