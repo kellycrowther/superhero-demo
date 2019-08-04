@@ -5,12 +5,14 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
 import { CharacterListComponent } from './character-list/character-list.component';
 import { HomeComponent } from './home/home.component';
 import { FeaturedCharacterComponent } from './featured-character/featured-character.component';
+import { ComicsComponent } from './comics/comics.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'character-detail', component: CharacterDetailComponent },
   { path: 'character-list', component: CharacterListComponent },
   { path: 'featured-character', component: FeaturedCharacterComponent },
+  { path: 'comics', component: ComicsComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
