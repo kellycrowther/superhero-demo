@@ -14,19 +14,23 @@ export class FeaturedCharacterComponent implements OnInit {
   public character$: Observable<ICharacterDataWrapper>;
   public showFeaturedCharacter: boolean = false;
 
-  constructor(public characterService: CharacterService, public data: MarvelProviderService) { }
+  constructor(public characterService: CharacterService) { }
 
   /* Eager vs Lazy Fetching */
   ngOnInit() {
     this.character$ = this.characterService.getCharacters();
     this.characterService.getCharactersAsPromise().then((data: ICharacterDataWrapper) => {
       console.info('FeaturedCharacterComponent->ngOnInit->asPromise: ', data);
+    }, e => {
+      console.error('FeaturedCharacter->ngOnInit->Error', e);
     });
   }
 
   public getCharactersButton(): void {
     this.character$.subscribe((data: ICharacterDataWrapper) => {
       console.info('FeaturedCharacterComponent->getCharactersButton()', data);
+    }, e => {
+      console.error('FeaturedCharacter->getCharactersButton->Error', e);
     });
   }
 

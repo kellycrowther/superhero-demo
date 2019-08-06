@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FeaturedCharacterComponent } from './featured-character.component';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CharacterService } from 'src/services/characters/character.service';
 
 describe('FeaturedCharacterComponent', () => {
   let component: FeaturedCharacterComponent;
@@ -12,8 +13,11 @@ describe('FeaturedCharacterComponent', () => {
       declarations: [ FeaturedCharacterComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        HttpClient, HttpHandler
+        CharacterService,
       ],
+      imports: [
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
   }));
