@@ -21,6 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComicsComponent } from './comics/comics.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RegistrationComponent } from './registration/registration.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CharacterDetailComponent,
     FeaturedCharacterComponent,
     HomeComponent,
-    ComicsComponent
+    ComicsComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
     AppRoutingModule
   ],
   providers: [],
