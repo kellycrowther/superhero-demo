@@ -4,26 +4,31 @@
   </div>
 
   <div>
-    <form fxLayout="column" fxLayoutAlign="space-around center">
+    <form [formGroup]="registrationForm" (ngSubmit)="handleRegistrationSubmission()" fxLayout="column" fxLayoutAlign="space-around center">
       <mat-form-field>
-        <input matInput placeholder="First Name">
+        <input formControlName="firstName" required matInput placeholder="First Name">
+        <mat-error>Enter your first name</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Last Name">
+        <input formControlName="lastName" required matInput placeholder="Last Name">
+        <mat-error>Enter your last name</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Email">
+        <input formControlName="email" required matInput email placeholder="Email">
+        <mat-error *ngIf="registrationForm.controls['email']?.errors?.required">Enter your email</mat-error>
+        <mat-error *ngIf="registrationForm.controls['email']?.errors?.email">Enter a valid email</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="Subscription Level">
-          <mat-option value="stuff"></mat-option>
+        <mat-select formControlName="subscriptionLevel" required placeholder="Subscription Level">
+          <mat-option *ngFor="let level of subscriptionLevels" [value]="level.value">{{level.name}}</mat-option>
         </mat-select>
+        <mat-error>Required</mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary">Register Now!</button>
+      <button [disabled]="registrationForm.invalid" mat-raised-button color="primary">Register Now!</button>
     </form>
   </div>
 </div>
